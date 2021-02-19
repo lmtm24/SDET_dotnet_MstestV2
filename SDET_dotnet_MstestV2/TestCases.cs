@@ -7,15 +7,24 @@ namespace SDET_dotnet_MstestV2
     public class TestCases
     {
         HomePage homepage;
+        BlogPage blog;
         [TestInitialize]
         public void BeforeTest()
         {
-            homepage = new HomePage();
+            //homepage = new HomePage();
+            blog = new BlogPage();
         }
         [TestMethod]
         public void Unosquare_BlogValidation()
         {
-            homepage.GoToServicesAndPracticeAreas();
+          // homepage.GoToServicesAndPracticeAreas();
+          blog.GoToBlog();
+          Assert.AreEqual("DIGITAL TRANSFORMATION BLOG", blog.CompareTitleBlog());
+          blog.SearchText("Quality Assurance");
+          blog.SearchClick();
+          Assert.AreEqual("QUALITY ASSURANCE QUESTIONS TO ASK IN AGILE SOFTWARE DEVELOPMENT", blog.CompareSearchResult());
+                
+
             /*Add a new Page object name Blog
              *Implement all neded to use Blog in the test class (Constructor, WebElements, etc)
              *Perform the following flow, Go to www.unosquare.com
